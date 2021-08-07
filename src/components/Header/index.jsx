@@ -13,6 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Link } from 'react-router-dom';
+import Register from 'features/Auth/components/Register';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,30 +46,19 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+         
           </Typography>
           <Link to="/todos"><Button color="inherit">Todos</Button></Link>
           <Link to="/albums"><Button color="inherit">Albums</Button></Link>
-          <Link><Button color="inherit">Login</Button></Link>
-          <Link><Button color="inherit">Login</Button></Link>
+          <Link to="/counter"><Button color="inherit">Counter</Button></Link>
+          
           <Button onClick={handleClickOpen} color="inherit">Regiter</Button>
         </Toolbar>
       </AppBar>
       <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+  
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-          />
+          <Register />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

@@ -5,6 +5,7 @@ import AlbumFeature from "./features/Album/pages";
 import Header from "./components/Header";
 import { Route } from "react-router-dom";
 import productApi from "./api/productApi";
+import CounterFeature from "./features/Counter";
 function App() {
   useEffect(() => {
   const fetchProduct = async () => {
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Route path="/counter" component={CounterFeature} />
       <Route path="/todos" component={TodoFeature} />
       <Route path="/albums" component={AlbumFeature} />
     </div>
