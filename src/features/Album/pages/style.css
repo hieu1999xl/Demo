@@ -1,0 +1,7 @@
+.album-list {
+  display: flex;
+}
+
+.album {
+  margin: 0 1em;
+}
