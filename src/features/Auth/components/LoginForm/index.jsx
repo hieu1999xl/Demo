@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types'
+
 import InputField from '../../../../components/form-controls/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,22 +12,18 @@ import PasswordField from '../../../../components/form-controls/PasswordField';
 
 
 const schema = yup.object().shape({
-   fullName: yup.string().required("please enter fullName")
-   .test('should has at least two words', 'please enter at least two words', (value) =>{
-       return value.split(' ').length >= 2
-   }),
-   email: yup.string().required('Please enter your email').email('please enter a valid email'),
+   
+   identifier: yup.string().required('Please enter your email').email('please enter a valid email'),
    password: yup.string().required('please enter your password').min(6, 'please enter at least 6 character'),
-   retypePassword: yup.string().required('please enter your password').oneOf([yup.ref('password')], 'password does not match')
+ 
 
 })
 
-RegisterForm.propTypes = {
-    onSubmit: propTypes.func,
-}
+// RegisterForm.propTypes = {
+//     onSubmit: propTypes.func,
+// }
 
 
-  
   const useStyles = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -48,14 +44,11 @@ RegisterForm.propTypes = {
     },
   }));
 
-function RegisterForm(props) {
+function LoginForm(props) {
     const form = useForm({
-        defaultValues: {
-            fullName: '',
-            email: '',
+        defaultValues: { 
+          identifier: '',
             password : '',
-            retypePassword: ''
-          
         },
         resolver: yupResolver(schema)
     })
@@ -83,16 +76,12 @@ function RegisterForm(props) {
           Sign in
         </Typography>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
+         
           <InputField
-            name="fullName" label="full Name" form={form}
-          />
-          <InputField
-             name="email" label="Email" form={form}
+             name="identifier" label="Email" form={form}
           />
           <PasswordField   name="password" label="Password" form={form} />
-          <PasswordField
-             name="retypePassword" label="retype password" form={form}
-          />
+         
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
@@ -107,12 +96,12 @@ function RegisterForm(props) {
           >
             Create an account
           </Button>
-          
+         
         </form>
       </div>
-      
+     
     </Container>
     )
 }
 
-export default RegisterForm;
+export default LoginForm;
